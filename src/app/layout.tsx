@@ -1,17 +1,26 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import {Poppins} from "next/font/google";
+import {Merriweather} from "next/font/google";
+import {Open_Sans} from "next/font/google";
 import "./globals.css";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight:'400',
+  variable: '--font-poppins'
+}) 
+const merriweather = Merriweather({
+  subsets: ['latin'],
+  weight:'700',
+  variable: '--font-merriweather'
+}) 
+const opensans = Open_Sans({
+  subsets: ['latin'],
+  weight:'500',
+  variable: '--font-opensans'
+}) 
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,9 +35,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${poppins.variable} ${merriweather.variable} ${opensans.variable}  antialiased`}
       >
+        <Header/>
         {children}
+        <Footer/>
       </body>
     </html>
   );
